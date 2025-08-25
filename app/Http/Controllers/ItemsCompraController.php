@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\ItemsCompra;
 use App\Models\Compra;
+use App\Models\User;
+
 
 class ItemsCompraController extends Controller
 {
@@ -48,6 +50,17 @@ class ItemsCompraController extends Controller
             'id_compra_fk' => $compraId,
         ]);
 
+
+        $compra = Compra::where('id_compra', $compraId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        $total = $compra->items->sum(fn($item) => $item->preco_item * $item->quantidade_item);
+
+        $compra->update([
+            'total_compra' => $total,
+        ]);
+
         return redirect()->route('itens.index', $compraId)->with('success', 'Item adicionado com sucesso.');
     }
 
@@ -82,6 +95,16 @@ class ItemsCompraController extends Controller
 
         $item->update($request->only(['nome_item', 'preco_item', 'quantidade_item']));
 
+        $compra = Compra::where('id_compra', $compraId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        $total = $compra->items->sum(fn($item) => $item->preco_item * $item->quantidade_item);
+
+        $compra->update([
+            'total_compra' => $total,
+        ]);
+
         return redirect()->route('itens.index', $compraId)->with('success', 'Item atualizado com sucesso.');
     }
 
@@ -96,6 +119,16 @@ class ItemsCompraController extends Controller
             ->firstOrFail();
 
         $item->delete();
+
+        $compra = Compra::where('id_compra', $compraId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        $total = $compra->items->sum(fn($item) => $item->preco_item * $item->quantidade_item);
+
+        $compra->update([
+            'total_compra' => $total,
+        ]);
 
         return redirect()->route('itens.index', $compraId)->with('success', 'Item removido com sucesso.');
     }

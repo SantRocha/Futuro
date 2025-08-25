@@ -35,25 +35,27 @@
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
                         </div>
 
-                        <!-- Total da Compra -->
-                        <div>
-                            <label for="total_compra" class="block text-sm font-medium text-gray-700 mb-2">
-                                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                </svg>
-                                Valor Total
-                            </label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-3 text-gray-500">R$</span>
-                                <input type="number"
-                                       step="0.01"
-                                       name="total_compra"
-                                       id="total_compra"
-                                       value="{{ $compra->total_compra }}"
-                                       required
-                                       class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
+                        @if (1 === 0)
+                            <!-- Total da Compra -->
+                            <div>
+                                <label for="total_compra" class="block text-sm font-medium text-gray-700 mb-2">
+                                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                    </svg>
+                                    Valor Total
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-3 text-gray-500">R$</span>
+                                    <input type="number"
+                                        step="0.01"
+                                        name="total_compra"
+                                        id="total_compra"
+                                        value="{{ $compra->total_compra }}"
+                                        required
+                                        class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <!-- Tipo de Compra -->
                         <div>
@@ -75,25 +77,27 @@
                             </select>
                         </div>
 
-                        <!-- Usuário -->
-                        <div>
-                            <label for="user_id" class="block text-sm font-medium text-gray-700 mb-2">
-                                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                                Usuário Responsável
-                            </label>
-                            <select name="user_id"
-                                    id="user_id"
-                                    required
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
-                                @foreach($usuarios as $user)
-                                    <option value="{{ $user->id }}" {{ $compra->user_id == $user->id ? 'selected' : '' }}>
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @if (1 === 0)
+                            <!-- Usuário -->
+                            <div>
+                                <label for="user_id" class="block text-sm font-medium text-gray-700 mb-2">
+                                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                    Usuário Responsável
+                                </label>
+                                <select name="user_id"
+                                        id="user_id"
+                                        required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
+                                    @foreach($usuarios as $user)
+                                        <option value="{{ $user->id }}" {{ $compra->user_id == $user->id ? 'selected' : '' }}>
+                                            {{ $user->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
 
                         <!-- Forma de Pagamento -->
                         <div>

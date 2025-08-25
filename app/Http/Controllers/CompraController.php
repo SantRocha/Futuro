@@ -17,6 +17,7 @@ class CompraController extends Controller
 
         $compras = Compra::with(['tipoCompra', 'user'])
             ->where('user_id', $userId)
+            ->orderBy('id_compra', 'desc')
             ->get();
 
         $totalGeral = $compras->sum('total_compra');

@@ -12,7 +12,7 @@ class Compra extends Model
     protected $table = 'compra';
     protected $primaryKey = 'id_compra';
 
-    protected $fillable = ['nome_compra', 'total_compra', 'id_tipo_compra_fk', 'pagamento', 'user_id'];
+    protected $fillable = ['nome_compra', 'total_compra', 'id_tipo_compra_fk', 'pagamento', 'user_id', ];
 
     public function tipoCompra()
     {
