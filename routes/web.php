@@ -21,10 +21,14 @@ use App\Http\Controllers\RelatorioController;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Aqui você pode pegar as últimas compras do banco ou algum outro serviço.
+    $ultimasCompras = \App\Models\Compra::latest()->take(4)->get(); // Exemplo de consulta
+
+    return view('dashboard', compact('ultimasCompras')); // Passando para a view
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

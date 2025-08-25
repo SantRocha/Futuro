@@ -109,11 +109,11 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-gray-900">{{ $compra['nome'] ?? 'Compra' }}</p>
-                                            <p class="text-sm text-gray-600">{{ isset($compra['data']) ? \Carbon\Carbon::parse($compra['data'])->format('d/m/Y') : 'Data não informada' }}</p>
+                                            <p class="font-medium text-gray-900">{{ $compra->nome_compra ?? 'Compra' }}</p>
+                                            <p class="text-sm text-gray-600">{{ isset($compra->created_at) ? \Carbon\Carbon::parse($compra->created_at)->format('d/m/Y') : 'Data não informada' }}</p>
                                         </div>
                                     </div>
-                                    <span class="font-semibold text-red-600">R$ {{ number_format($compra['valor'] ?? 0, 2, ',', '.') }}</span>
+                                    <span class="font-semibold text-red-600">R$ {{ number_format($compra->total_compra ?? 0, 2, ',', '.') }}</span>
                                 </div>
                             @endforeach
                         </div>
