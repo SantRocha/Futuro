@@ -24,6 +24,10 @@ Route::get('/', function () {
 
 });
 
+Route::get('/doacao', function () {
+    return view('doacao');
+})->name('doacao');
+
 Route::get('/dashboard', function () {
     // Aqui você pode pegar as últimas compras do banco ou algum outro serviço.
     $ultimasCompras = \App\Models\Compra::latest()->take(4)->get(); // Exemplo de consulta

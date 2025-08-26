@@ -511,7 +511,7 @@
                             <p class="text-lg font-medium text-gray-900">Escolha como contribuir:</p>
 
                             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="#"
+                                <a href="https://link.mercadopago.com.br/meufututo" target="_blank"
                                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-rose-600 transition duration-200 shadow-lg hover-scale">
                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
