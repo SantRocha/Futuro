@@ -60,11 +60,14 @@ class CompraController extends Controller
 
         $data = $request->all();
         $data['user_id'] = Auth::id();
-        $data['total_compra'] = 0; // inicia com zero, será atualizado com base nos itens
+        $data['total_compra'] = 0;
 
-        Compra::create($data);
+       // Cria a compra e pega o objeto criado
+        $compra = Compra::create($data);
 
-        return redirect()->route('compra.index')->with('success', 'Compra criada com sucesso.');
+        // Redireciona para a rota de itens dessa compra recém-criada
+        return redirect()->route('itens.index', $compra->id_compra)
+                            ->with('success', 'Compra criada com sucesso.');
     }
 
     public function edit($id)
