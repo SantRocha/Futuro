@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CompraController extends Controller
 {
-    public function index()
+    /*public function index()
     {
         $userId = auth()->id();
 
@@ -23,7 +23,40 @@ class CompraController extends Controller
         $totalGeral = $compras->sum('total_compra');
 
         return view('compra.index', compact('compras', 'totalGeral'));
+    }*/
+
+    public function index(Request $request)
+    {
+        $userId = auth()->id();
+
+        // Mês/ano atual como padrão
+        $mes = $request->input('mes', now()->format('m'));
+        $ano = $request->input('ano', now()->format('Y'));
+
+        // Base query
+        $query = Compra::with(['tipoCompra', 'user'])
+            ->where('user_id', $userId);
+
+        // Se não for "todo o período" aplica o filtro
+        if (!($request->has('periodo') && $request->input('periodo') === 'todos')) {
+            $query->whereMonth('created_at', $mes)
+                ->whereYear('created_at', $ano);
+        }
+
+        $compras = $query->orderBy('id_compra', 'desc')->get();
+        $totalGeral = $compras->sum('total_compra');
+
+        // Lista de meses/anos existentes no banco para montar o filtro
+        $mesesDisponiveis = Compra::selectRaw('YEAR(created_at) as ano, MONTH(created_at) as mes')
+            ->where('user_id', $userId)
+            ->groupBy('ano', 'mes')
+            ->orderBy('ano', 'desc')
+            ->orderBy('mes', 'desc')
+            ->get();
+
+        return view('compra.index', compact('compras', 'totalGeral', 'mesesDisponiveis', 'mes', 'ano'));
     }
+
 
     public function create()
     {

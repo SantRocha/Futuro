@@ -30,7 +30,7 @@ class Compra extends Model
     }
 
     public function items()
-{
-    return $this->hasMany(ItemsCompra::class, 'id_compra_fk');
-}
+    {
+        return $this->hasMany(ItemsCompra::class, 'id_compra_fk');
+    }
 }
