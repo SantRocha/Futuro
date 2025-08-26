@@ -135,12 +135,14 @@
                                                     Editar
                                                 </a>
 
-                                                <form action="{{ route('itens.destroy', [$compra->id_compra, $item->id_item]) }}" method="POST" class="inline">
+                                                <form action="{{ route('itens.destroy', [$compra->id_compra, $item->id_item]) }}" method="POST" class="inline delete-form">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                            onclick="return confirm('Tem certeza que deseja remover este item?')"
-                                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200">
+                                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
+                                                            data-item-name="{{ $item->nome_item }}"
+                                                            data-item-price="{{ number_format($item->preco_item, 2, ',', '.') }}"
+                                                            data-item-quantity="{{ $item->quantidade_item }}">
                                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                                         </svg>
@@ -209,5 +211,217 @@
             </div>
         </div>
     </div>
-</x-app-layout>
 
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="deleteModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
+        <div class="relative p-4 top-20 mx-auto border w-96 shadow-lg rounded-xl bg-white">
+            <!-- Header do Modal -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Confirmar Exclusão</h3>
+                </div>
+                <button type="button" onclick="closeDeleteModal()" class="text-gray-400 hover:text-gray-600 transition duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Conteúdo do Modal -->
+            <div class="mb-6">
+                <p class="text-gray-700 mb-4">
+                    Tem certeza que deseja remover este item? Esta ação não pode ser desfeita.
+                </p>
+
+                <!-- Informações do Item -->
+                <div id="itemInfo" class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-red-100 to-orange-100 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 id="itemName" class="font-semibold text-gray-900">Nome do Item</h4>
+                            <p id="itemDetails" class="text-sm text-gray-600">Detalhes do item</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aviso sobre consequências -->
+                <div class="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-red-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <p class="text-sm font-medium text-red-800">Atenção!</p>
+                            <p class="text-sm text-red-700">O item será removido permanentemente da compra e o total será recalculado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="flex items-center justify-end space-x-3">
+                <button type="button"
+                        onclick="closeDeleteModal()"
+                        class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-200">
+                    Cancelar
+                </button>
+                <button type="button"
+                        id="confirmDeleteBtn"
+                        onclick="confirmDelete()"
+                        class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200 font-medium">
+                    <span id="deleteButtonText">Remover Item</span>
+                    <svg id="deleteButtonSpinner" class="hidden animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para controlar o modal -->
+    <script>
+        let currentDeleteForm = null;
+
+        // Função para abrir o modal de exclusão
+        function openDeleteModal(form, itemName, itemPrice, itemQuantity) {
+            currentDeleteForm = form;
+
+            // Preencher informações do item no modal
+            document.getElementById('itemName').textContent = itemName;
+            document.getElementById('itemDetails').textContent = `Preço: R$ ${itemPrice} | Quantidade: ${itemQuantity}`;
+
+            // Mostrar o modal
+            document.getElementById('deleteModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            // Focar no botão de cancelar para acessibilidade
+            setTimeout(() => {
+                document.querySelector('#deleteModal button[onclick="closeDeleteModal()"]').focus();
+            }, 100);
+        }
+
+        // Função para fechar o modal
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            currentDeleteForm = null;
+
+            // Resetar estado do botão
+            const deleteBtn = document.getElementById('confirmDeleteBtn');
+            const deleteText = document.getElementById('deleteButtonText');
+            const deleteSpinner = document.getElementById('deleteButtonSpinner');
+
+            deleteBtn.disabled = false;
+            deleteText.textContent = 'Remover Item';
+            deleteSpinner.classList.add('hidden');
+        }
+
+        // Função para confirmar a exclusão
+        function confirmDelete() {
+            if (!currentDeleteForm) return;
+
+            // Mostrar loading no botão
+            const deleteBtn = document.getElementById('confirmDeleteBtn');
+            const deleteText = document.getElementById('deleteButtonText');
+            const deleteSpinner = document.getElementById('deleteButtonSpinner');
+
+            deleteBtn.disabled = true;
+            deleteText.textContent = 'Removendo...';
+            deleteSpinner.classList.remove('hidden');
+
+            // Submeter o formulário após um pequeno delay
+            setTimeout(() => {
+                currentDeleteForm.submit();
+            }, 500);
+        }
+
+        // Inicializar event listeners quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar event listeners para todos os botões de exclusão
+            const deleteButtons = document.querySelectorAll('.delete-form button[type="submit"]');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const form = this.closest('form');
+                    const itemName = this.getAttribute('data-item-name');
+                    const itemPrice = this.getAttribute('data-item-price');
+                    const itemQuantity = this.getAttribute('data-item-quantity');
+
+                    openDeleteModal(form, itemName, itemPrice, itemQuantity);
+                });
+            });
+
+            // Fechar modal ao clicar fora dele
+            document.getElementById('deleteModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDeleteModal();
+                }
+            });
+
+            // Fechar modal com a tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !document.getElementById('deleteModal').classList.contains('hidden')) {
+                    closeDeleteModal();
+                }
+            });
+        });
+    </script>
+
+    <!-- CSS adicional para animações -->
+    <style>
+        /* Animação de entrada do modal */
+        #deleteModal:not(.hidden) {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        #deleteModal:not(.hidden) > div {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Melhorar a responsividade do modal */
+        @media (max-width: 640px) {
+            #deleteModal > div {
+                width: 90%;
+                margin: 20px auto;
+                top: 10px;
+            }
+        }
+
+        /* Estilo para o backdrop blur */
+        #deleteModal {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</x-app-layout>
