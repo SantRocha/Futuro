@@ -39,7 +39,7 @@ class ItemsCompraController extends Controller
 
         $request->validate([
             'nome_item' => 'required|string|max:255',
-            'preco_item' => 'required|numeric',
+            'preco_item' => 'required|numeric|min:0.01',
             'quantidade_item' => 'required|integer|min:1',
         ]);
 
@@ -89,7 +89,7 @@ class ItemsCompraController extends Controller
 
         $request->validate([
             'nome_item' => 'required|string|max:255',
-            'preco_item' => 'required|numeric',
+            'preco_item' => 'required|numeric|min:0.01',
             'quantidade_item' => 'required|integer|min:1',
         ]);
 

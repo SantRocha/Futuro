@@ -64,12 +64,13 @@
                                 <div class="relative">
                                     <span class="absolute left-3 top-3 text-gray-500">R$</span>
                                     <input type="number"
-                                           step="0.01"
-                                           name="preco_item"
-                                           id="preco_item"
-                                           value="{{ $item->preco_item }}"
-                                           required
-                                           class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
+                                            min="0.01"
+                                            step="0.01"
+                                            name="preco_item"
+                                            id="preco_item"
+                                            value="{{ $item->preco_item }}"
+                                            required
+                                            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
                                 </div>
                             </div>
 
@@ -86,6 +87,7 @@
                                        id="quantidade_item"
                                        value="{{ $item->quantidade_item }}"
                                        min="1"
+                                       step="1"
                                        required
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-200">
                             </div>
@@ -152,8 +154,19 @@
             const totalElement = document.getElementById('total-item');
 
             function calcularTotal() {
-                const preco = parseFloat(precoInput.value) || 0;
-                const quantidade = parseInt(quantidadeInput.value) || 0;
+                let preco = parseFloat(precoInput.value) || 0;
+                let quantidade = parseInt(quantidadeInput.value) || 0;
+
+                // Evita valores negativos
+                if (preco < 0) {
+                    preco = 0;
+                    precoInput.value = 0;
+                }
+                if (quantidade < 0) {
+                    quantidade = 0;
+                    quantidadeInput.value = 0;
+                }
+
                 const total = preco * quantidade;
 
                 totalElement.textContent = 'R$ ' + total.toLocaleString('pt-BR', {

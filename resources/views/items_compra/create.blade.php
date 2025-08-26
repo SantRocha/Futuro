@@ -63,6 +63,7 @@
                                 <div class="relative">
                                     <span class="absolute left-3 top-3 text-gray-500">R$</span>
                                     <input type="number"
+                                           min="0.01"
                                            step="0.01"
                                            name="preco_item"
                                            id="preco_item"
@@ -149,8 +150,19 @@
             const totalElement = document.getElementById('total-item');
 
             function calcularTotal() {
-                const preco = parseFloat(precoInput.value) || 0;
-                const quantidade = parseInt(quantidadeInput.value) || 0;
+                let preco = parseFloat(precoInput.value) || 0;
+                let quantidade = parseInt(quantidadeInput.value) || 0;
+
+                // Evita valores negativos
+                if (preco < 0) {
+                    preco = 0;
+                    precoInput.value = 0;
+                }
+                if (quantidade < 0) {
+                    quantidade = 0;
+                    quantidadeInput.value = 0;
+                }
+
                 const total = preco * quantidade;
 
                 totalElement.textContent = 'R$ ' + total.toLocaleString('pt-BR', {
