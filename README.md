@@ -1,66 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Futuro - Seu Controle Financeiro Gratuito e Open Source
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Licença MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Contribuições Bem-Vindas](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 
-## About Laravel
+Bem-vindo ao **Futuro**! 🚀
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O Futuro é um aplicativo simples e intuitivo, desenvolvido para ajudar você a ter total controle sobre suas finanças pessoais. Nosso propósito é claro: tornar a organização financeira acessível a todos, de forma **gratuita** e com total **transparência**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ O Que o Futuro Oferece?
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Com o Futuro, você pode:
 
-## Learning Laravel
+-   **Controle de Gastos**: Registre todas as suas despesas de forma rápida e fácil, para saber exatamente para onde seu dinheiro está indo.
+-   **Organização por Categorias**: Classifique seus gastos em categorias personalizadas (como alimentação, transporte, lazer) e visualize seus padrões de consumo.
+-   **Relatórios Claros**: Gere relatórios simples para ter uma visão clara do seu histórico financeiro e tomar decisões mais inteligentes.
+-   **Visão Geral Rápida**: Um painel inicial limpo e objetivo que mostra as informações mais importantes sobre suas finanças.
+-   **Segurança e Privacidade**: Seus dados financeiros são seus. Com o Futuro, você tem controle total sobre suas informações, sem preocupações com vendas ou compartilhamento.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 💡 Por Que o Futuro é Diferente?
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+O Futuro se destaca por sua filosofia:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **Totalmente Gratuito**: Sim, é isso mesmo! Sem pegadinhas, sem custos ocultos, sem assinaturas. Acreditamos que o controle financeiro não deve ser um privilégio.
+-   **Código Aberto e Transparente**: O código-fonte do Futuro é público. Isso significa que qualquer pessoa pode ver como ele funciona, o que garante mais segurança e confiança. Além disso, a comunidade pode ajudar a melhorá-lo continuamente!
+-   **Desenvolvido para Você**: Criado com a intenção de ser uma ferramenta prática e acessível, focada nas suas necessidades de organização financeira.
 
-## Laravel Sponsors
+## 💻 Tecnologias por Trás
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Para garantir um aplicativo robusto e com um design moderno, o Futuro foi construído utilizando:
 
-### Premium Partners
+-   **Laravel**: Um framework PHP poderoso e elegante.
+-   **PHP**: A linguagem de programação que dá vida ao Futuro.
+-   **Tailwind CSS**: Para um design limpo, moderno e responsivo, que se adapta a qualquer tela.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🚀 Como Começar?
 
-## Contributing
+Para começar a usar o Futuro e transformar sua vida financeira, é simples:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  Acesse o aplicativo (seja localmente ou em um ambiente online).
+2.  Crie sua conta gratuitamente.
+3.  Comece a registrar suas compras e a organizar suas finanças de um jeito que você nunca viu!
 
-## Code of Conduct
+## ❤️ Apoie o Projeto
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+O Futuro é um projeto de código aberto e gratuito, mantido com paixão e dedicação. Se você gosta do que vê e quer nos ajudar a continuar desenvolvendo e mantendo esta ferramenta incrível, considere apoiar o projeto. Sua contribuição, por menor que seja, faz uma grande diferença!
 
-## Security Vulnerabilities
+**Como você pode apoiar:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   **Doação**: Pequenas contribuições financeiras nos ajudam a cobrir custos de infraestrutura e a investir em novas funcionalidades [Clique aqui para Doar.](https://link.mercadopago.com.br/meufututo)
 
-## License
+-   **Contribuição com Código**: Se você é desenvolvedor, suas ideias e seu código são muito bem-vindos para tornar o Futuro ainda melhor.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT. Isso significa que você tem total liberdade para usar, modificar e distribuir o Futuro.
+
+## 📧 Contato
+
+Tem dúvidas, sugestões ou encontrou algum problema? Adoraríamos ouvir você!
+
+-   Abra uma [issue](https://github.com/SantRocha/Futuro/issues) no GitHub.
+
+--- 
+
+**Desenvolvido com ❤️ por Santiago Rocha.**
+
+<!-- **Insira suas screenshots aqui!** -->
+<!-- Exemplo: ![Dashboard Futuro](docs/screenshots/dashboard.png) -->
+<!-- Exemplo: ![Lista de Compras](docs/screenshots/compras.png) -->
+<!-- Exemplo: ![Relatório PDF](docs/screenshots/relatorio_pdf.png) -->
+
+
+
+
+
+## 📚 Sumário
+
+-   [✨ O Que o Futuro Oferece?](#-o-que-o-futuro-oferece)
+-   [💡 Por Que o Futuro é Diferente?](#-por-que-o-futuro-é-diferente)
+-   [💻 Tecnologias por Trás](#-tecnologias-por-trás)
+-   [🚀 Como Começar?](#-como-começar)
+-   [❤️ Apoie o Projeto](#️-apoie-o-projeto)
+-   [📄 Licença](#-licença)
+-   [📧 Contato](#-contato)
+
+

@@ -11,20 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CompraController extends Controller
 {
-    /*public function index()
-    {
-        $userId = auth()->id();
-
-        $compras = Compra::with(['tipoCompra', 'user'])
-            ->where('user_id', $userId)
-            ->orderBy('id_compra', 'desc')
-            ->get();
-
-        $totalGeral = $compras->sum('total_compra');
-
-        return view('compra.index', compact('compras', 'totalGeral'));
-    }*/
-
     public function index(Request $request)
     {
         $userId = auth()->id();
@@ -56,7 +42,6 @@ class CompraController extends Controller
 
         return view('compra.index', compact('compras', 'totalGeral', 'mesesDisponiveis', 'mes', 'ano'));
     }
-
 
     public function create()
     {
