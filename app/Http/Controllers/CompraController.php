@@ -45,7 +45,7 @@ class CompraController extends Controller
 
     public function create()
     {
-        $tipos = TipoCompra::all();
+        $tipos = TipoCompra::where('user_id', auth()->id())->get();
         $usuarios = User::all();
         return view('compra.create', compact('tipos', 'usuarios'));
     }
@@ -58,16 +58,29 @@ class CompraController extends Controller
             'pagamento' => 'nullable|in:DINHEIRO,PIX,CARTAO DEBITO,CARTAO CREDITO,OUTRO',
         ]);
 
+        $userId = Auth::id();
+
+        // Verifica se o tipo de compra realmente pertence ao usuário
+        $tipoCompraPertence = \App\Models\TipoCompra::where('id_tipo_compra', $request->id_tipo_compra_fk)
+            ->where('user_id', $userId)
+            ->exists();
+
+        if (!$tipoCompraPertence) {
+            return redirect()->back()
+                ->withErrors(['id_tipo_compra_fk' => 'Tipo de compra inválido.'])
+                ->withInput();
+        }
+
         $data = $request->all();
-        $data['user_id'] = Auth::id();
+        $data['user_id'] = $userId;
         $data['total_compra'] = 0;
 
-       // Cria a compra e pega o objeto criado
+        // Cria a compra e pega o objeto criado
         $compra = Compra::create($data);
 
         // Redireciona para a rota de itens dessa compra recém-criada
         return redirect()->route('itens.index', $compra->id_compra)
-                            ->with('success', 'Compra criada com sucesso.');
+            ->with('success', 'Compra criada com sucesso.');
     }
 
     public function edit($id)

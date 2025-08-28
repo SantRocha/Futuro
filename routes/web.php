@@ -8,6 +8,9 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\ItemsCompraController;
 use App\Http\Controllers\RelatorioController;
 
+use App\Models\Compra;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +32,15 @@ Route::get('/doacao', function () {
 })->name('doacao');
 
 Route::get('/dashboard', function () {
-    // Aqui você pode pegar as últimas compras do banco ou algum outro serviço.
-    $ultimasCompras = \App\Models\Compra::latest()->take(4)->get(); // Exemplo de consulta
+    $userId = Auth::id();
 
-    return view('dashboard', compact('ultimasCompras')); // Passando para a view
+    $ultimasCompras = Compra::with('tipoCompra')
+        ->where('user_id', $userId)
+        ->orderBy('id_compra', 'desc')
+        ->take(4)
+        ->get();
+
+    return view('dashboard', compact('ultimasCompras'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
