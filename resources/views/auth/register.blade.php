@@ -201,9 +201,9 @@
     <div class="mt-6 text-center">
         <p class="text-xs text-gray-500">
             Ao criar sua conta, você concorda com nossos
-            <a href="#" class="text-emerald-600 hover:text-emerald-700">Termos de Uso</a>
+            <a href="{{ route('termos') }}" class="text-emerald-600 hover:text-emerald-700">Termos de Uso</a>
             e
-            <a href="#" class="text-emerald-600 hover:text-emerald-700">Política de Privacidade</a>
+            <a href="{{ route('privacidade') }}" class="text-emerald-600 hover:text-emerald-700">Política de Privacidade</a>
         </p>
     </div>
 </x-guest-layout>

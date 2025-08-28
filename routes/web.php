@@ -28,8 +28,16 @@ Route::get('/', function () {
 });
 
 Route::get('/doacao', function () {
-    return view('doacao');
+    return view('livres/doacao');
 })->name('doacao');
+
+Route::get('/termos', function () {
+    return view('livres/termos');
+})->name('termos');
+
+Route::get('/privacidade', function () {
+    return view('livres/privacidade');
+})->name('privacidade');
 
 Route::get('/dashboard', function () {
     $userId = Auth::id();
