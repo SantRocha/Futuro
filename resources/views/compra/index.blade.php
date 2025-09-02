@@ -222,20 +222,20 @@
                                         <div>
                                             <!-- Criado em -->
                                             <div class="flex items-center space-x-2 text-gray-600">
-                                                <span class="text-gray-600">Criado</span>
-                                                <span class="text-primary flex items-center space-x-1">
+                                                <span class="text-gray-500 text-sm">Criado</span>
+                                                <span class="text-primary flex items-center space-x-1 text-sm text-gray-500">
                                                     <!-- Ícone de calendário -->
-                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
                                                     </svg>
 
                                                     <!-- Data formatada -->
                                                     <span>{{ \Carbon\Carbon::parse($compra->created_at)->format('d M Y') }}</span>
                                                 </span>
-                                                <span class="text-gray-600">às</span>
-                                                <span class="text-primary flex items-center space-x-1">
+                                                <span class="text-sm text-gray-500">às</span>
+                                                <span class="text-primary flex items-center space-x-1 text-sm text-gray-500">
                                                     <!-- Ícone de relógio -->
-                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                                     </svg>
 
@@ -245,11 +245,11 @@
                                             </div>
 
                                             <!-- Editado em -->
-                                            <div class="flex items-center space-x-2 text-gray-600">
-                                                <span class="text-gray-600">Editado</span>
+                                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                                <span class="text-sm text-gray-500">Editado</span>
                                                 <span class="text-primary flex items-center space-x-1">
                                                     <!-- Ícone de calendário -->
-                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
                                                     </svg>
 
@@ -259,7 +259,7 @@
                                                 <span class="text-gray-600">às</span>
                                                 <span class="text-primary flex items-center space-x-1">
                                                     <!-- Ícone de relógio -->
-                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                                                    <svg class="w-[18px] h-[18px] mr-1 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                                     </svg>
 
