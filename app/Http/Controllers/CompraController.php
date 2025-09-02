@@ -100,7 +100,6 @@ class CompraController extends Controller
         $request->validate([
             'nome_compra' => 'required|string|max:255',
             'id_tipo_compra_fk' => 'required|exists:tipo_compra,id_tipo_compra',
-            'user_id' => 'required|exists:users,id',
             'pagamento' => 'nullable|in:DINHEIRO,PIX,CARTAO DEBITO,CARTAO CREDITO,OUTRO',
         ]);
 
@@ -113,7 +112,6 @@ class CompraController extends Controller
         $compra->update([
             'nome_compra' => $request->input('nome_compra'),
             'id_tipo_compra_fk' => $request->input('id_tipo_compra_fk'),
-            'user_id' => $request->input('user_id'), // ou Auth::id()
             'pagamento' => $request->input('pagamento'),
             'total_compra' => $total,
         ]);
