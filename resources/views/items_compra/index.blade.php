@@ -92,7 +92,11 @@
                                                 </div>
                                                 <div>
                                                     <h4 class="font-semibold text-gray-900">{{ $item->nome_item }}</h4>
-                                                    <p class="text-sm text-gray-500 md:hidden">ID: {{ $item->id_item }}</p>
+                                                    <p class="text-sm text-gray-500 ">
+                                                    <span>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</span>
+                                                    as
+                                                    <span>{{ \Carbon\Carbon::parse($item->created_at)->format('H:i') }}</span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

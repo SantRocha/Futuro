@@ -18,7 +18,7 @@ class ItemsCompraController extends Controller
             ->where('user_id', Auth::id())
             ->firstOrFail();
 
-        $itens = $compra->itens;
+        $itens = $compra->itens()->orderBy('created_at', 'desc')->get();
         return view('items_compra.index', compact('compra', 'itens'));
     }
 
