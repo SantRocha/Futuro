@@ -9,7 +9,7 @@
         <title>Meu Futuro - Gestão Financeira Gratuita e de Código Aberto</title>
 
         <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V19A2 2 0 0 0 5 21H19A2 2 0 0 0 21 19V9M19 9H14V4H5V19H19V9Z'/%3E%3C/svg%3E">
+        <link rel="shortcut icon" href="{{ asset('storage/imagens/favicon.svg') }}" type="image/x-icon">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -118,10 +118,8 @@
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-futuro-gradient rounded-xl flex items-center justify-center mr-3 shine-effect">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
+                        <div class="w-10 h-10  rounded-xl flex items-center justify-center mr-3 shine-effect">
+                            <img src="{{ asset('storage/imagens/favicon.svg') }}" alt="">
                         </div>
                         <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                             Meu Futuro
@@ -576,10 +574,8 @@
                     <!-- Logo and Description -->
                     <div class="md:col-span-2">
                         <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-futuro-gradient rounded-xl flex items-center justify-center mr-3">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                </svg>
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-3">
+                                <img src="{{ asset('storage/imagens/favicon.svg') }}" alt="">
                             </div>
                             <span class="text-2xl font-bold">Meu Futuro</span>
                         </div>

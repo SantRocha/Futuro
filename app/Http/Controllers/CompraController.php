@@ -50,6 +50,7 @@ class CompraController extends Controller
         return view('compra.create', compact('tipos', 'usuarios'));
     }
 
+
     public function store(Request $request)
     {
         $request->validate([
