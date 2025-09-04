@@ -9,7 +9,7 @@
         <meta name="description" content="Acesse o Futuro - Seu aplicativo de gestão financeira pessoal. Faça login ou registre-se para começar a organizar suas finanças.">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V19A2 2 0 0 0 5 21H19A2 2 0 0 0 21 19V9M19 9H14V4H5V19H19V9Z'/%3E%3C/svg%3E">
+        <link rel="shortcut icon" href="{{ asset('storage/imagens/favicon.svg') }}" type="image/x-icon">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
