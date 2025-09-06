@@ -108,7 +108,7 @@
             <!-- Logo Section -->
             <div class="animate-fade-in mt-32">
                 <a href="/" class="block mb-8">
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-center justify-center shine-effect">
                         <!-- Logo Icon -->
                         <img class="w-16 h-16" src="{{ asset('storage/imagens/favicon.svg') }}" alt="">
 

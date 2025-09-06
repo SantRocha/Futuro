@@ -1,3 +1,26 @@
+<style>
+    /* Efeito de brilho */
+    .shine-effect {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .shine-effect::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+</style>
 <nav x-data="{ open: false }" class="bg-gradient-to-r from-emerald-600 to-blue-600 shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -7,7 +30,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group">
                         <!-- Logo do Futuro -->
-                        <div class="w-10 h-10  rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200">
+                        <div class="w-10 h-10  rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200 shine-effect">
                             <img class="" src="{{ asset('storage/imagens/favicon.svg') }}" alt="">
                         </div>
                         <span class="text-2xl font-bold text-white tracking-tight">Futuro</span>

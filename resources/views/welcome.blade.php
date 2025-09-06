@@ -574,7 +574,7 @@
                     <!-- Logo and Description -->
                     <div class="md:col-span-2">
                         <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-3 shine-effect">
                                 <img src="{{ asset('storage/imagens/favicon.svg') }}" alt="">
                             </div>
                             <span class="text-2xl font-bold">Meu Futuro</span>
